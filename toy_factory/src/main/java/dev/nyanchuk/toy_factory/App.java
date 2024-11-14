@@ -1,17 +1,13 @@
 package dev.nyanchuk.toy_factory;
 
-/**
- * Hello world!
- */
-public final class App {
-    private App() {
+import dev.nyanchuk.toy_factory.controller.*;
+
+public class App {
+
+    public static void main(String[] args) {
+
+        new HomeController();
+
     }
 
-    /**
-     * Says hello to the world.
-     * @param args The arguments of the program.
-     */
-    public static void main(String[] args) {
-        System.out.println("Hello World!");
-    }
 }
