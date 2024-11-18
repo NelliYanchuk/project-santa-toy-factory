@@ -21,4 +21,14 @@ public class ScannerView {
             scanner = null;
         }
     }
+
+    // Method to ask for user option
+    public static void selectOption() {
+        System.out.println("\nPlease select an option: ");
+    }
+
+    // Method to print an error message when an invalid input is given
+    public static void printErrorMessage() {
+        System.out.println("\n----- Incorrect input -----\nPlease choose the option from the list below:");
+    }
 }

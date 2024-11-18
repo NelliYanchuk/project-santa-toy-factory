@@ -21,7 +21,7 @@ public class HomeView extends ScannerView {
 
                 switch (option) {
                     case 1:
-                        // ElfView.index();
+                        ElfView.index();
                         return;
                     case 2:
                         // SantaView.index();
@@ -31,12 +31,12 @@ public class HomeView extends ScannerView {
                         return;
                     default:
                         // If the number is not in the menu options
-                        ErrorView.printErrorMessage();
+                        printErrorMessage();
                         break;
                 }
             } else {
                 // If the input is not a number
-                ErrorView.printErrorMessage();
+                printErrorMessage();
                 scanner.next(); // get invalid input
             }
         }
@@ -47,7 +47,4 @@ public class HomeView extends ScannerView {
         System.out.println("\n----- Good bye! Have a nice day! -----");
     }
 
-    public static void selectOption() {
-        System.out.println("\nPlease select an option: ");
-    }
 }

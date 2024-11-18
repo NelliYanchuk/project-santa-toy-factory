@@ -9,6 +9,4 @@ public class ToysDB {
     private List<GoodToy> goodToys;
     private List<BadToy> badToys;
 
-    
-
 }
