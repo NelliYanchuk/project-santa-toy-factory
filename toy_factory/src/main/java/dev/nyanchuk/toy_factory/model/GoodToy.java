@@ -7,7 +7,7 @@ public class GoodToy extends Toy {
     private String category;
 
     public GoodToy(String title, String brand, int targetAge, String category, boolean isGoodToy) {
-        super(title, isGoodToy);
+        super(title, isGoodToy); // Calls the constructor of Toy
         this.brand = brand;
         this.targetAge = targetAge;
         this.category = category;

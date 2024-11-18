@@ -17,9 +17,9 @@ public class Toy {
 
     public void setId(int id) {
         if (isGoodToy) {
-            this.id = "B" + id;
+            this.id = "G" + id;
         } else {
-            this.id = "M" + id;
+            this.id = "B" + id;
         }
     }
 
