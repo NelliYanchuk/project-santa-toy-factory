@@ -89,15 +89,17 @@ public class ElfView extends ShortMessage {
     public static void postGoodToy() {
         System.out.println("-----------------------------------------");
         System.out.println("Enter the title:");
-        String title = scanner.next();
+        String title = scanner.next(); // Read title
         System.out.println("Enter the brand:");
-        String brand = scanner.next();
+        scanner.nextLine(); // Get the leftover newline character
+        String brand = scanner.next(); // Read brand
         System.out.println("Enter the recommended age:");
-        int age = scanner.nextInt();
+        int age = scanner.nextInt(); // Read age
+        scanner.nextLine(); // Get the leftover newline character after nextInt()
         System.out.println("Enter the category:");
-        String category = scanner.next();
+        String category = scanner.next(); // Read category
 
-        // Dto - Data Transfert Object
+        // Dto - Data Transfer Object
         controller.postGoodToy(new GoodToyDTO(title, brand, age, category));
     }
 
