@@ -27,7 +27,7 @@ public class ElfView extends ShortMessage {
                     selectChild();
                     return;
                 case 2:
-                    System.out.println("All toys are here");
+                controller.showGoodToys();
                     return;
                 case 3:
                     System.out.println("Delete a toy");

@@ -1,8 +1,12 @@
 package dev.nyanchuk.toy_factory.repository;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import dev.nyanchuk.toy_factory.db.IDatabase;
 import dev.nyanchuk.toy_factory.model.BadToy;
 import dev.nyanchuk.toy_factory.model.GoodToy;
+import dev.nyanchuk.toy_factory.model.Toy;
 import dev.nyanchuk.toy_factory.singleton.BadToyDatabaseSingleton;
 import dev.nyanchuk.toy_factory.singleton.GoodToyDatabaseSingleton;
 
@@ -28,6 +32,24 @@ public class ToyRepository {
     @SuppressWarnings("unchecked")
     public void saveBadToy(BadToy toy) {
         db.save(toy);
+    }
+
+    // Method to get all toys (both good and bad)
+    @SuppressWarnings("unchecked")
+    public List<Toy> getToys() {
+        List<Toy> allToys = new ArrayList<>();
+
+        // Adding good toys
+        this.setDB("good_toy");
+        List<GoodToy> goodToys = (List<GoodToy>) db.getToys();
+        allToys.addAll(goodToys);
+
+        // Adding bad toys
+        this.setDB("bad_toy");
+        List<BadToy> badToys = (List<BadToy>) db.getToys();
+        allToys.addAll(badToys);
+
+        return allToys;
     }
 
 }
