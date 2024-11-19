@@ -11,15 +11,21 @@ public class Toy {
         this.isGoodToy = isGoodToy;
     }
 
+    public Toy(String id, String title, boolean isGoodToy) {
+        this.id = id;
+        this.title = title;
+        this.isGoodToy = isGoodToy;
+    }
+
     public String getId() {
         return id;
     }
 
     public void setId(int id) {
         if (isGoodToy) {
-            this.id = "G" + id;
-        } else {
             this.id = "B" + id;
+        } else {
+            this.id = "M" + id;
         }
     }
 

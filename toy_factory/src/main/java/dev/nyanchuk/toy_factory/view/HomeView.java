@@ -1,6 +1,6 @@
 package dev.nyanchuk.toy_factory.view;
 
-public class HomeView extends ScannerView {
+public class HomeView extends ShortMessage {
 
     public static void index() {
         openScanner();
@@ -27,7 +27,8 @@ public class HomeView extends ScannerView {
                         // SantaView.index();
                         return;
                     case 3:
-                        quit();
+                        closeScanner();
+                        quitMessage();
                         return;
                     default:
                         // If the number is not in the menu options
@@ -41,10 +42,4 @@ public class HomeView extends ScannerView {
             }
         }
     }
-
-    public static void quit() {
-        closeScanner();
-        System.out.println("\n----- Good bye! Have a nice day! -----");
-    }
-
 }

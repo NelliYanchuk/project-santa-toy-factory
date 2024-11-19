@@ -2,10 +2,15 @@ package dev.nyanchuk.toy_factory.model;
 
 public class BadToy extends Toy {
 
-    String content;
+    private String content;
 
-    public BadToy(String title, String content, boolean isGoodToy) {
-        super(title, isGoodToy); // Calls the constructor of Toy
+    public BadToy(String title, boolean isGoodToy, String content) {
+        super(title, isGoodToy);
+        this.content = content;
+    }
+
+    public BadToy(String id, String title, boolean isGoodToy, String content) {
+        super(id, title, isGoodToy);
         this.content = content;
     }
 

@@ -3,7 +3,7 @@ package dev.nyanchuk.toy_factory.view;
 import dev.nyanchuk.toy_factory.controller.*;
 import dev.nyanchuk.toy_factory.dto.*;
 
-public class ElfView extends ScannerView {
+public class ElfView extends ShortMessage {
 
     private static final ToyController controller = new ToyController();
 
@@ -14,12 +14,41 @@ public class ElfView extends ScannerView {
         System.out.println("2. View all toys");
         System.out.println("3. Delete toy");
         System.out.println("4. Log out");
-        System.out.println("Select an option:");
+        System.out.println("5. Exit the program");
 
-        int option = scanner.nextInt();
+        selectOption();
 
-        if (option == 1) selectChild();
-        if (option == 4) closeSession();
+        // Check if the input is an integer
+        if (scanner.hasNextInt()) {
+            int option = scanner.nextInt();
+
+            switch (option) {
+                case 1:
+                    selectChild();
+                    return;
+                case 2:
+                    System.out.println("All toys are here");
+                    return;
+                case 3:
+                    System.out.println("Delete a toy");
+                    return;
+                case 4:
+                    closeSession();
+                    return;
+                case 5:
+                    closeScanner();
+                    quitMessage();
+                    return;
+                default:
+                    // If the number is not in the menu options
+                    printErrorMessage();
+                    break;
+            }
+        } else {
+            // If the input is not a number
+            printErrorMessage();
+            scanner.next(); // get invalid input
+        }
     }
 
     public static void selectChild() {
@@ -27,9 +56,34 @@ public class ElfView extends ScannerView {
         System.out.println("For what child:");
         System.out.println("1. Good");
         System.out.println("2. Bad");
-        int option = scanner.nextInt();
+        System.out.println("3. Log out");
 
-        if (option == 1) postGoodToy();
+        selectOption();
+
+        // Check if the input is an integer
+        if (scanner.hasNextInt()) {
+            int option = scanner.nextInt();
+
+            switch (option) {
+                case 1:
+                    postGoodToy();
+                    return;
+                case 2:
+                    postBadToy();
+                    return;
+                case 3:
+                    closeSession();
+                    return;
+                default:
+                    // If the number is not in the menu options
+                    printErrorMessage();
+                    break;
+            }
+        } else {
+            // If the input is not a number
+            printErrorMessage();
+            scanner.next(); // get invalid input
+        }
     }
 
     public static void postGoodToy() {
@@ -47,13 +101,19 @@ public class ElfView extends ScannerView {
         controller.postGoodToy(new GoodToyDTO(title, brand, age, category));
     }
 
+    public static void postBadToy() {
+        System.out.println("-----------------------------------------");
+        System.out.println("Enter the title:");
+        String title = scanner.next();
+        System.out.println("Enter the content:");
+        String content = scanner.next();
+
+        // Dto - Data Transfert Object
+        controller.postBadToy(new BadToyDTO(title, content));
+    }
+
     public static void addToyResponse() {
         System.out.println("Toy added successfully");
         index();
     }
-
-    public static void closeSession() {
-        HomeView.index();
-    }
-
 }

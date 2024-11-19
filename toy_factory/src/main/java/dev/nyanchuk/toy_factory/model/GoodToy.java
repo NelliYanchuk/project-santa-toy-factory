@@ -6,8 +6,15 @@ public class GoodToy extends Toy {
     private int targetAge;
     private String category;
 
-    public GoodToy(String title, String brand, int targetAge, String category, boolean isGoodToy) {
-        super(title, isGoodToy); // Calls the constructor of Toy
+    public GoodToy(String title, boolean isGoodToy, String brand, int targetAge, String category) {
+        super(title, isGoodToy); // Call the constructor of Toy
+        this.brand = brand;
+        this.targetAge = targetAge;
+        this.category = category;
+    }
+
+    public GoodToy(String id, String title, boolean isGoodToy, String brand, int targetAge, String category) {
+        super(id, title, isGoodToy);
         this.brand = brand;
         this.targetAge = targetAge;
         this.category = category;
