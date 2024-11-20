@@ -20,6 +20,13 @@ public class GoodToy extends Toy {
         this.category = category;
     }
 
+    public GoodToy(String id, String title, boolean isGoodToy, String brand, int targetAge, String category) {
+        super(id, title, isGoodToy);  // Call the constructor of the Toy class
+        this.brand = brand;
+        this.targetAge = targetAge;
+        this.category = category;
+    }
+
     // Getters and setters
     public String getBrand() {
         return brand;

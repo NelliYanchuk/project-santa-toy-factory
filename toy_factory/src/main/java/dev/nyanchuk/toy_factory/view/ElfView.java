@@ -12,7 +12,7 @@ public class ElfView extends ShortMessage {
 
     public static void index() {
 
-        System.out.println("Toy Manager (Session Type: Elf)");
+        managerElf();
         System.out.println("1. Add Toy");
         System.out.println("2. View all Toys");
         System.out.println("3. Delete toy");
@@ -24,10 +24,11 @@ public class ElfView extends ShortMessage {
 
         switch (option) {
             case 1:
-                addToy(scanner); // Now calls addToy to choose between Good or Bad Toy first
+                addToy(scanner); // calls addToy to choose Good or Bad Toy
                 break;
             case 2:
                 controller.showToys(); // Show all toys
+                index();
                 break;
             case 3:
                 System.out.println("Toy deleting is not implemented yet");
@@ -37,8 +38,9 @@ public class ElfView extends ShortMessage {
                 closeSession();
                 break;
             case 5:
+                closeScanner();
                 quitMessage();
-                break;
+                return; // Add this return to exit the method after printing the quit message
             default:
                 System.out.println("Invalid option.");
         }
@@ -47,8 +49,8 @@ public class ElfView extends ShortMessage {
     private static void addToy(Scanner scanner) {
         // Ask for the toy type
         System.out.println("For child ...:");
-        System.out.println("1. Good Toy");
-        System.out.println("2. Bad Toy");
+        System.out.println("1. Good");
+        System.out.println("2. Bad");
         selectOption();
 
         int type = scanner.nextInt();

@@ -14,6 +14,11 @@ public class BadToy extends Toy {
         this.content = content;
     }
 
+    public BadToy(String id, String title, boolean isGoodToy, String content) {
+        super(id, title, isGoodToy);  // Call the constructor of the Toy class
+        this.content = content;
+    }
+
     // Getter and setter
     public String getContent() {
         return content;

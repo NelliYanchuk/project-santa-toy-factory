@@ -16,11 +16,11 @@ public class ToyRepository {
 
     // Fetch all toys (both good and bad)
     public List<Toy> getToys() {
-        return toyDatabase.getToys();
+        return toyDatabase.getToys();  // Get toys from database
     }
 
     // Save a toy (good or bad)
     public void saveToy(Toy toy) {
-        toyDatabase.save(toy);
+        toyDatabase.save(toy);  // Save the toy to database
     }
 }
