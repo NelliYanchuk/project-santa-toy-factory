@@ -16,7 +16,7 @@ public class ToyDatabase implements IDatabase<Toy> {
     @Override
     public void save(Toy toy) {
         toyStorage.add(toy);
-        System.out.println(toy.getTitle() + " added");
+        System.out.println("\n" + toy.getTitle() + " added");
     }
 
     // Get all toys

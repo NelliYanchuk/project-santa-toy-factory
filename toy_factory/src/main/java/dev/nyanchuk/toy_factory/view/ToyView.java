@@ -7,27 +7,27 @@ import dev.nyanchuk.toy_factory.model.Toy;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ToyView {
+public class ToyView extends ShortMessage{
 
     // Method to display good toys
     public void displayGoodToys(List<GoodToy> goodToys) {
+        toyMessage("good");
         for (GoodToy toy : goodToys) {
             System.out.println("Toy ID: " + toy.getId());
             System.out.println("Title: " + toy.getTitle());
             System.out.println("Brand: " + toy.getBrand());
             System.out.println("Age: " + toy.getTargetAge());
             System.out.println("Category: " + toy.getCategory());
-            System.out.println("-----------------------------");
         }
     }
 
     // Method to display bad toys
     public void displayBadToys(List<BadToy> badToys) {
+        toyMessage("bad");
         for (BadToy toy : badToys) {
             System.out.println("Toy ID: " + toy.getId());
             System.out.println("Title: " + toy.getTitle());
             System.out.println("Content: " + toy.getContent());
-            System.out.println("-----------------------------");
         }
     }
 
