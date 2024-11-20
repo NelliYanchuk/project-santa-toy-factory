@@ -1,50 +1,32 @@
 package dev.nyanchuk.toy_factory.controller;
 
-import java.util.List;
+import dev.nyanchuk.toy_factory.model.Toy;
+import dev.nyanchuk.toy_factory.repository.ToyRepository;
+import dev.nyanchuk.toy_factory.view.ToyView;
 
-import dev.nyanchuk.toy_factory.dto.*;
-import dev.nyanchuk.toy_factory.model.BadToy;
-import dev.nyanchuk.toy_factory.model.GoodToy;
-import dev.nyanchuk.toy_factory.repository.*;
-import dev.nyanchuk.toy_factory.singleton.ToyRepositorySingleton;
-import dev.nyanchuk.toy_factory.view.*;
+import java.util.List;
 
 public class ToyController {
 
-    private final ToyRepository repository;
+    private final ToyRepository toyRepository;
 
     public ToyController() {
-        this.repository = ToyRepositorySingleton.getInstance();
+        this.toyRepository = new ToyRepository();
     }
 
-    public void postGoodToy(GoodToyDTO goodToyDto) {
-
-        GoodToy toy = new GoodToy(goodToyDto.title(), true, goodToyDto.brand(), goodToyDto.recommendedAge(), goodToyDto.category());
-        repository.setDB("good_toy");
-        repository.saveGoodToy(toy);
-        ElfView.addToyResponse();
+    // Fetch all toys
+    public List<Toy> getAllToys() {
+        return toyRepository.getToys();
     }
 
-    public void postBadToy(BadToyDTO badToyDto) {
-        
-        BadToy toy = new BadToy(badToyDto.title(), false, badToyDto.content());
-        repository.setDB("bad_toy");
-        repository.saveBadToy(toy);
-        ElfView.addToyResponse();
+    // Save a toy (good or bad)
+    public void postToy(Toy toy) {
+        toyRepository.saveToy(toy);
     }
 
-    // Method to show all good toys
-    public void showGoodToys() {
-        // Set the repository to fetch good toys
-        repository.setDB("good_toy");
-
-        // Fetching all good toys from the repository
-        List<GoodToy> goodToys = (List<GoodToy>) repository.getToys();
-
-        // Passing the list of good toys to the view to display
-        ToyView.displayGoodToys(goodToys);
+    // Show all toys
+    public void showToys() {
+        List<Toy> toys = getAllToys();
+        ToyView.displayToys(toys);
     }
-
-
-
 }

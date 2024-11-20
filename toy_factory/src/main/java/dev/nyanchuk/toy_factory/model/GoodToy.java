@@ -6,20 +6,21 @@ public class GoodToy extends Toy {
     private int targetAge;
     private String category;
 
-    public GoodToy(String title, boolean isGoodToy, String brand, int targetAge, String category) {
-        super(title, isGoodToy); // Call the constructor of Toy
+    public GoodToy(String title, String brand, int targetAge, String category) {
+        super(title, true);  // Pass the correct values to the parent constructor
         this.brand = brand;
         this.targetAge = targetAge;
         this.category = category;
     }
 
-    public GoodToy(String id, String title, boolean isGoodToy, String brand, int targetAge, String category) {
-        super(id, title, isGoodToy);
+    public GoodToy(String id, String title, String brand, int targetAge, String category) {
+        super(id, title, true);  // Pass the correct values to the parent constructor
         this.brand = brand;
         this.targetAge = targetAge;
         this.category = category;
     }
 
+    // Getters and setters
     public String getBrand() {
         return brand;
     }
@@ -43,5 +44,4 @@ public class GoodToy extends Toy {
     public void setCategory(String category) {
         this.category = category;
     }
-
 }

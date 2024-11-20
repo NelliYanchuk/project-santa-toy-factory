@@ -1,121 +1,84 @@
 package dev.nyanchuk.toy_factory.view;
 
-import dev.nyanchuk.toy_factory.controller.*;
-import dev.nyanchuk.toy_factory.dto.*;
+import dev.nyanchuk.toy_factory.controller.ToyController;
+import dev.nyanchuk.toy_factory.model.GoodToy;
+import dev.nyanchuk.toy_factory.model.BadToy;
+
+import java.util.Scanner;
 
 public class ElfView extends ShortMessage {
 
     private static final ToyController controller = new ToyController();
 
     public static void index() {
-        System.out.println("-----------------------------------------");
+
         System.out.println("Toy Manager (Session Type: Elf)");
-        System.out.println("1. Add toy");
-        System.out.println("2. View all toys");
+        System.out.println("1. Add Toy");
+        System.out.println("2. View all Toys");
         System.out.println("3. Delete toy");
         System.out.println("4. Log out");
         System.out.println("5. Exit the program");
-
         selectOption();
 
-        // Check if the input is an integer
-        if (scanner.hasNextInt()) {
-            int option = scanner.nextInt();
+        int option = scanner.nextInt();
 
-            switch (option) {
-                case 1:
-                    selectChild();
-                    return;
-                case 2:
-                controller.showGoodToys();
-                    return;
-                case 3:
-                    System.out.println("Delete a toy");
-                    return;
-                case 4:
-                    closeSession();
-                    return;
-                case 5:
-                    closeScanner();
-                    quitMessage();
-                    return;
-                default:
-                    // If the number is not in the menu options
-                    printErrorMessage();
-                    break;
-            }
-        } else {
-            // If the input is not a number
-            printErrorMessage();
-            scanner.next(); // get invalid input
+        switch (option) {
+            case 1:
+                addToy(scanner); // Now calls addToy to choose between Good or Bad Toy first
+                break;
+            case 2:
+                controller.showToys(); // Show all toys
+                break;
+            case 3:
+                System.out.println("Toy deleting is not implemented yet");
+                break;
+            case 4:
+                System.out.println("Logging out...");
+                closeSession();
+                break;
+            case 5:
+                quitMessage();
+                break;
+            default:
+                System.out.println("Invalid option.");
         }
     }
 
-    public static void selectChild() {
-        System.out.println("-----------------------------------------");
-        System.out.println("For what child:");
-        System.out.println("1. Good");
-        System.out.println("2. Bad");
-        System.out.println("3. Log out");
-
+    private static void addToy(Scanner scanner) {
+        // Ask for the toy type
+        System.out.println("For child ...:");
+        System.out.println("1. Good Toy");
+        System.out.println("2. Bad Toy");
         selectOption();
 
-        // Check if the input is an integer
-        if (scanner.hasNextInt()) {
-            int option = scanner.nextInt();
+        int type = scanner.nextInt();
 
-            switch (option) {
-                case 1:
-                    postGoodToy();
-                    return;
-                case 2:
-                    postBadToy();
-                    return;
-                case 3:
-                    closeSession();
-                    return;
-                default:
-                    // If the number is not in the menu options
-                    printErrorMessage();
-                    break;
-            }
-        } else {
-            // If the input is not a number
-            printErrorMessage();
-            scanner.next(); // get invalid input
+        if (type == 1) {
+            // Good Toy
+            System.out.println("Enter Title: ");
+            String title = scanner.next();
+            System.out.println("Enter Brand: ");
+            String brand = scanner.next();
+            System.out.println("Enter Age: ");
+            int age = scanner.nextInt();
+            System.out.println("Enter Category: ");
+            String category = scanner.next();
+
+            // Create the good toy
+            GoodToy goodToy = new GoodToy(title, brand, age, category);
+            controller.postToy(goodToy); // Post the good toy
+        } else if (type == 2) {
+            // Bad Toy
+            System.out.println("Enter Title: ");
+            String title = scanner.next();
+            System.out.println("Enter Content: ");
+            String content = scanner.next();
+
+            // Create the bad toy
+            BadToy badToy = new BadToy(title, content);
+            controller.postToy(badToy); // Post the bad toy
         }
-    }
 
-    public static void postGoodToy() {
-        System.out.println("-----------------------------------------");
-        System.out.println("Enter the title:");
-        String title = scanner.next(); // Read title
-        System.out.println("Enter the brand:");
-        scanner.nextLine(); // Get the leftover newline character
-        String brand = scanner.next(); // Read brand
-        System.out.println("Enter the recommended age:");
-        int age = scanner.nextInt(); // Read age
-        scanner.nextLine(); // Get the leftover newline character after nextInt()
-        System.out.println("Enter the category:");
-        String category = scanner.next(); // Read category
-
-        // Dto - Data Transfer Object
-        controller.postGoodToy(new GoodToyDTO(title, brand, age, category));
-    }
-
-    public static void postBadToy() {
-        System.out.println("-----------------------------------------");
-        System.out.println("Enter the title:");
-        String title = scanner.next();
-        System.out.println("Enter the content:");
-        String content = scanner.next();
-
-        // Dto - Data Transfert Object
-        controller.postBadToy(new BadToyDTO(title, content));
-    }
-
-    public static void addToyResponse() {
-        System.out.println("Toy added successfully");
         index();
     }
 }

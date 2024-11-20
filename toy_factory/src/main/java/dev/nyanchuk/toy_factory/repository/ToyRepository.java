@@ -1,55 +1,26 @@
 package dev.nyanchuk.toy_factory.repository;
 
-import java.util.ArrayList;
+import dev.nyanchuk.toy_factory.db.IDatabase;
+import dev.nyanchuk.toy_factory.model.Toy;
+import dev.nyanchuk.toy_factory.singleton.ToyDatabaseSingleton;
+
 import java.util.List;
 
-import dev.nyanchuk.toy_factory.db.IDatabase;
-import dev.nyanchuk.toy_factory.model.BadToy;
-import dev.nyanchuk.toy_factory.model.GoodToy;
-import dev.nyanchuk.toy_factory.model.Toy;
-import dev.nyanchuk.toy_factory.singleton.BadToyDatabaseSingleton;
-import dev.nyanchuk.toy_factory.singleton.GoodToyDatabaseSingleton;
-
-@SuppressWarnings("rawtypes")
 public class ToyRepository {
 
-    private IDatabase db;
+    private IDatabase<Toy> toyDatabase;
 
-    public void setDB(String type) {
-        // setter injection
-        if (type == "good_toy")
-            this.db = GoodToyDatabaseSingleton.getInstance();
-
-        if (type == "bad_toy")
-            this.db = BadToyDatabaseSingleton.getInstance();
+    public ToyRepository() {
+        this.toyDatabase = ToyDatabaseSingleton.getInstance();  // Singleton for ToyDatabase
     }
 
-    @SuppressWarnings("unchecked")
-    public void saveGoodToy(GoodToy toy) {
-        db.save(toy);
-    }
-
-    @SuppressWarnings("unchecked")
-    public void saveBadToy(BadToy toy) {
-        db.save(toy);
-    }
-
-    // Method to get all toys (both good and bad)
-    @SuppressWarnings("unchecked")
+    // Fetch all toys (both good and bad)
     public List<Toy> getToys() {
-        List<Toy> allToys = new ArrayList<>();
-
-        // Adding good toys
-        this.setDB("good_toy");
-        List<GoodToy> goodToys = (List<GoodToy>) db.getToys();
-        allToys.addAll(goodToys);
-
-        // Adding bad toys
-        this.setDB("bad_toy");
-        List<BadToy> badToys = (List<BadToy>) db.getToys();
-        allToys.addAll(badToys);
-
-        return allToys;
+        return toyDatabase.getToys();
     }
 
+    // Save a toy (good or bad)
+    public void saveToy(Toy toy) {
+        toyDatabase.save(toy);
+    }
 }

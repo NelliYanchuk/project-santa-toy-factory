@@ -21,4 +21,13 @@ public class ShortMessage extends ScannerView {
     public static void quitMessage() {
         System.out.println("\n----- Good bye! Have a nice day! -----");
     }
+
+    // Mуthods to print the roles
+    public static void managerElf() {
+        System.out.println("\n----- Toy Manager (Session Type: Elf) -----");
+    }
+
+    public static void managerSanta() {
+        System.out.println("\n----- Toy Manager (Session Type: Santa) -----");
+    }
 }

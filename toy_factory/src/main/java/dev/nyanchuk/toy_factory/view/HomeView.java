@@ -24,7 +24,7 @@ public class HomeView extends ShortMessage {
                         ElfView.index();
                         return;
                     case 2:
-                        // SantaView.index();
+                        // SantaView.index();  // Uncomment once SantaView is implemented
                         return;
                     case 3:
                         closeScanner();
