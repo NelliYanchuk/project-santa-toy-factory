@@ -7,7 +7,7 @@ import dev.nyanchuk.toy_factory.model.Toy;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ToyView extends ShortMessage{
+public class ToyView extends ShortMessageView{
 
     // Method to display good toys
     public void displayGoodToys(List<GoodToy> goodToys) {

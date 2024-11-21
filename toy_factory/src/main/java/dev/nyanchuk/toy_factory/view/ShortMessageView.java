@@ -1,6 +1,6 @@
 package dev.nyanchuk.toy_factory.view;
 
-public class ShortMessage extends ScannerView {
+public class ShortMessageView extends ScannerView {
 
     // Method to ask for user option
     public static void selectOption() {

@@ -7,7 +7,7 @@ import java.io.PrintStream;
 
 import org.junit.jupiter.api.Test;
 
-public class ShortMessageTest {
+public class ShortMessageViewTest {
 
     @Test
     public void testShortMessage() {
@@ -19,7 +19,7 @@ public class ShortMessageTest {
         // ----- selectOption -----
         String expectedOption = "Please select an option: ";
 
-        ShortMessage.selectOption();
+        ShortMessageView.selectOption();
 
         assertTrue(outContent.toString().contains(expectedOption));
 
@@ -27,7 +27,7 @@ public class ShortMessageTest {
         String expectedIncorrectInput1 = "Incorrect input";
         String expectedIncorrectInput2 = "Please choose the option from the list below:";
 
-        ShortMessage.printErrorMessage();
+        ShortMessageView.printErrorMessage();
 
         assertTrue(outContent.toString().contains(expectedIncorrectInput1));
         assertTrue(outContent.toString().contains(expectedIncorrectInput2));
@@ -35,13 +35,13 @@ public class ShortMessageTest {
         // ----- quitMessage -----
         String expectedQuitMessage = "Good bye! Have a nice day!";
 
-        ShortMessage.quitMessage();
+        ShortMessageView.quitMessage();
 
         assertTrue(outContent.toString().contains(expectedQuitMessage));
 
         // ----- closeSession -----
         // String expectedHomeMenu = "Log in as:";
-        // ShortMessage.closeSession();
+        // ShortMessageView.closeSession();
         // assertTrue(outContent.toString().contains(expectedHomeMenu));
 
         // Restore original System.out

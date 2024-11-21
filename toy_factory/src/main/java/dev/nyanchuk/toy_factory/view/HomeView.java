@@ -1,10 +1,10 @@
 package dev.nyanchuk.toy_factory.view;
 
-public class HomeView extends ShortMessage {
+public class HomeView extends ShortMessageView {
 
     public static void index() {
         openScanner();
-
+    
         while (true) {
             // Main Menu
             System.out.println("\n-----Welcome to the Toy Factory! -----");
@@ -12,13 +12,14 @@ public class HomeView extends ShortMessage {
             System.out.println("1. Elf");
             System.out.println("2. Santa Claus");
             System.out.println("3. Exit the program");
-
+    
             selectOption();
-
+    
             // Check if the input is an integer
             if (scanner.hasNextInt()) {
                 int option = scanner.nextInt();
-
+                scanner.nextLine(); // Consume the newline character after reading the integer input
+    
                 switch (option) {
                     case 1:
                         ElfView.index();
@@ -42,4 +43,5 @@ public class HomeView extends ShortMessage {
             }
         }
     }
+    
 }

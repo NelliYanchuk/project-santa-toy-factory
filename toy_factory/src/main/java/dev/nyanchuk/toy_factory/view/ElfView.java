@@ -6,7 +6,7 @@ import dev.nyanchuk.toy_factory.model.BadToy;
 
 import java.util.Scanner;
 
-public class ElfView extends ShortMessage {
+public class ElfView extends ShortMessageView {
 
     private static final ToyController controller = new ToyController();
 
@@ -21,6 +21,7 @@ public class ElfView extends ShortMessage {
         selectOption();
 
         int option = scanner.nextInt();
+        scanner.nextLine();  // Consume newline character
 
         switch (option) {
             case 1:
@@ -48,39 +49,45 @@ public class ElfView extends ShortMessage {
 
     private static void addToy(Scanner scanner) {
         // Ask for the toy type
-        System.out.println("For child ...:");
+        System.out.println("\nFor child ...:");
         System.out.println("1. Good");
         System.out.println("2. Bad");
         selectOption();
 
         int type = scanner.nextInt();
+        scanner.nextLine(); // Consume the newline character
 
         if (type == 1) {
             // Good Toy
             System.out.println("Enter Title: ");
-            String title = scanner.next();
+            String title = scanner.nextLine();  // Use nextLine() for String input
             System.out.println("Enter Brand: ");
-            String brand = scanner.next();
+            String brand = scanner.nextLine(); // Read brand as a string
             System.out.println("Enter Age: ");
             int age = scanner.nextInt();
+            scanner.nextLine(); // Consume the newline character after the integer input
             System.out.println("Enter Category: ");
-            String category = scanner.next();
+            String category = scanner.nextLine(); // Read category as a string
 
             // Create the good toy
             GoodToy goodToy = new GoodToy(title, brand, age, category);
+            String id = controller.generateToyId("good"); // Generate ID for the new toy
+            goodToy.setId(id); // Set the generated ID
             controller.postToy(goodToy); // Post the good toy
         } else if (type == 2) {
             // Bad Toy
             System.out.println("Enter Title: ");
-            String title = scanner.next();
+            String title = scanner.nextLine();  // Use nextLine() for String input
             System.out.println("Enter Content: ");
-            String content = scanner.next();
+            String content = scanner.nextLine(); // Read content as a string
 
             // Create the bad toy
             BadToy badToy = new BadToy(title, content);
+            String id = controller.generateToyId("bad"); // Generate ID for the new toy
+            badToy.setId(id); // Set the generated ID
             controller.postToy(badToy); // Post the bad toy
         }
 
-        index();
+        index();  // After adding, go back to the menu
     }
 }
