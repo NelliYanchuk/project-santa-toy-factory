@@ -75,4 +75,9 @@ public class ToyController {
         ToyView toyView = new ToyView();
         toyView.displayToys(toys);  // Display the toys in the view
     }
+
+    // Delete a toy by ID
+    public void deleteToyById(String toyId) {
+        toyRepository.deleteToyById(toyId);
+    }
 }

@@ -7,11 +7,19 @@ import dev.nyanchuk.toy_factory.model.Toy;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ToyView extends ShortMessageView{
+public class ToyView extends ShortMessageView {
+
+    String goodType = "good";
+    String badType = "bad";
 
     // Method to display good toys
     public void displayGoodToys(List<GoodToy> goodToys) {
-        toyMessage("good");
+        if (goodToys == null || goodToys.isEmpty()) {
+            noToyMessage(goodType);
+            return; // Exit the method if no toys are found
+        }
+
+        toyMessage(goodType);
         for (GoodToy toy : goodToys) {
             System.out.println("Toy ID: " + toy.getId());
             System.out.println("Title: " + toy.getTitle());
@@ -23,7 +31,12 @@ public class ToyView extends ShortMessageView{
 
     // Method to display bad toys
     public void displayBadToys(List<BadToy> badToys) {
-        toyMessage("bad");
+        if (badToys == null || badToys.isEmpty()) {
+            noToyMessage(badType);
+            return; // Exit the method if no toys are found
+        }
+
+        toyMessage(badType);
         for (BadToy toy : badToys) {
             System.out.println("Toy ID: " + toy.getId());
             System.out.println("Title: " + toy.getTitle());
@@ -45,7 +58,12 @@ public class ToyView extends ShortMessageView{
             }
         }
 
-        // Call the respective methods to display good and bad toys
+        if ((badToys == null || badToys.isEmpty())&& (goodToys == null || goodToys.isEmpty()) ) {
+            System.out.println("Stock does not have any toy left.");;
+            return; // Exit the method if no toys are found
+        }
+
+        // Call the methods to display good and bad toys
         displayGoodToys(goodToys);
         displayBadToys(badToys);
     }

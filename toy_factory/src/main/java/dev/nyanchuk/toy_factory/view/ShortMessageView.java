@@ -35,4 +35,9 @@ public class ShortMessageView extends ScannerView {
     public static void toyMessage(String type) {
         System.out.println("\nThe " + type + " toys in stock: ");
     }
+
+    // Methods to print toys info
+    public static void noToyMessage(String type) {
+        System.out.println("\nThere is no " + type + " toys in stock: ");
+    }
 }

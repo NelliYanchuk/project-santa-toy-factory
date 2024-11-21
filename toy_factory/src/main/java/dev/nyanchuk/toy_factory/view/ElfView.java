@@ -21,7 +21,7 @@ public class ElfView extends ShortMessageView {
         selectOption();
 
         int option = scanner.nextInt();
-        scanner.nextLine();  // Consume newline character
+        scanner.nextLine(); // consume the newline
 
         switch (option) {
             case 1:
@@ -32,7 +32,7 @@ public class ElfView extends ShortMessageView {
                 index();
                 break;
             case 3:
-                System.out.println("Toy deleting is not implemented yet");
+                deleteToy(scanner); // Delete toy by ID
                 break;
             case 4:
                 System.out.println("Logging out...");
@@ -53,10 +53,10 @@ public class ElfView extends ShortMessageView {
         System.out.println("1. Good");
         System.out.println("2. Bad");
         selectOption();
-
+    
         int type = scanner.nextInt();
-        scanner.nextLine(); // Consume the newline character
-
+        scanner.nextLine(); // Consume the newline character after the integer input
+    
         if (type == 1) {
             // Good Toy
             System.out.println("Enter Title: ");
@@ -68,11 +68,9 @@ public class ElfView extends ShortMessageView {
             scanner.nextLine(); // Consume the newline character after the integer input
             System.out.println("Enter Category: ");
             String category = scanner.nextLine(); // Read category as a string
-
+    
             // Create the good toy
             GoodToy goodToy = new GoodToy(title, brand, age, category);
-            String id = controller.generateToyId("good"); // Generate ID for the new toy
-            goodToy.setId(id); // Set the generated ID
             controller.postToy(goodToy); // Post the good toy
         } else if (type == 2) {
             // Bad Toy
@@ -80,14 +78,24 @@ public class ElfView extends ShortMessageView {
             String title = scanner.nextLine();  // Use nextLine() for String input
             System.out.println("Enter Content: ");
             String content = scanner.nextLine(); // Read content as a string
-
+    
             // Create the bad toy
             BadToy badToy = new BadToy(title, content);
-            String id = controller.generateToyId("bad"); // Generate ID for the new toy
-            badToy.setId(id); // Set the generated ID
             controller.postToy(badToy); // Post the bad toy
         }
-
+    
         index();  // After adding, go back to the menu
+    }
+
+    // Method to handle toy deletion
+    private static void deleteToy(Scanner scanner) {
+        // Ask the user for the ID of the toy to delete
+        System.out.println("Enter the ID of the toy you want to delete:");
+        String toyId = scanner.nextLine();  // Read the toy ID
+
+        // Call the ToyController to delete the toy
+        controller.deleteToyById(toyId);
+        
+        index();  // After deleting, go back to the menu
     }
 }
