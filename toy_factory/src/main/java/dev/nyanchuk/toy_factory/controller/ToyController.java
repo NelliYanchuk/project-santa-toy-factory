@@ -5,6 +5,9 @@ import dev.nyanchuk.toy_factory.repository.ToyRepository;
 import dev.nyanchuk.toy_factory.view.ToyView;
 
 import java.util.List;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -119,4 +122,37 @@ public class ToyController {
         toyView.displayBadToys(badToys); // Display only bad toys
     }
 
+    // Method to save all toys to a CSV file
+    public void saveToysToCsv(String fileName) {
+        List<Toy> toys = toyRepository.getToys();  // Fetch all toys
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
+            // Write the header to the CSV file
+            writer.write("ID,Title,Type,Brand,Age,Category,Content\n");
+
+            // Iterate over the toys and write each toy's details
+            for (Toy toy : toys) {
+                if (toy instanceof GoodToy) {
+                    GoodToy goodToy = (GoodToy) toy;
+                    writer.write(String.format("%s,%s,%s,%s,%d,%s,\n",
+                            goodToy.getId(),
+                            goodToy.getTitle(),
+                            "Good",
+                            goodToy.getBrand(),
+                            goodToy.getTargetAge(),
+                            goodToy.getCategory()));
+                } else if (toy instanceof BadToy) {
+                    BadToy badToy = (BadToy) toy;
+                    writer.write(String.format("%s,%s,%s,,,,%s\n",
+                            badToy.getId(),
+                            badToy.getTitle(),
+                            "Bad",
+                            badToy.getContent()));
+                }
+            }
+            System.out.println("Toys have been saved to " + fileName);
+        } catch (IOException e) {
+            System.out.println("Error saving toys to CSV: " + e.getMessage());
+        }
+    }
 }

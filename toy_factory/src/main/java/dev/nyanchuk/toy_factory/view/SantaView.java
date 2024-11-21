@@ -29,7 +29,8 @@ public class SantaView extends ToyView {
                 index();
                 break;
             case 3:
-                System.out.println("This option is in progress now");
+                controller.saveToysToCsv("toys.csv");
+                index();
                 break;
             case 4:
                 System.out.println("Logging out...");
