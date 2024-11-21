@@ -24,7 +24,6 @@ public class ToyRepository {
     public void saveToy(Toy toy) {
         toyDatabase.save(toy);  // Save the toy to database
     }
-
     // Delete a toy by ID
     public void deleteToyById(String toyId) {
         List<Toy> toys = toyDatabase.getToys();

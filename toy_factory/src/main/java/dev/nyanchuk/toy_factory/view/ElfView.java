@@ -6,7 +6,7 @@ import dev.nyanchuk.toy_factory.model.BadToy;
 
 import java.util.Scanner;
 
-public class ElfView extends ShortMessageView {
+public class ElfView extends ToyView {  // Now extends ToyView
 
     private static final ToyController controller = new ToyController();
 
@@ -28,7 +28,7 @@ public class ElfView extends ShortMessageView {
                 addToy(scanner); // calls addToy to choose Good or Bad Toy
                 break;
             case 2:
-                controller.showToys(); // Show all toys
+                controller.showToys(); // Show all toys (good and bad) using inherited method from ToyView
                 index();
                 break;
             case 3:
@@ -53,10 +53,10 @@ public class ElfView extends ShortMessageView {
         System.out.println("1. Good");
         System.out.println("2. Bad");
         selectOption();
-    
+
         int type = scanner.nextInt();
         scanner.nextLine(); // Consume the newline character after the integer input
-    
+
         if (type == 1) {
             // Good Toy
             System.out.println("Enter Title: ");
@@ -68,7 +68,7 @@ public class ElfView extends ShortMessageView {
             scanner.nextLine(); // Consume the newline character after the integer input
             System.out.println("Enter Category: ");
             String category = scanner.nextLine(); // Read category as a string
-    
+
             // Create the good toy
             GoodToy goodToy = new GoodToy(title, brand, age, category);
             controller.postToy(goodToy); // Post the good toy
@@ -78,12 +78,12 @@ public class ElfView extends ShortMessageView {
             String title = scanner.nextLine();  // Use nextLine() for String input
             System.out.println("Enter Content: ");
             String content = scanner.nextLine(); // Read content as a string
-    
+
             // Create the bad toy
             BadToy badToy = new BadToy(title, content);
             controller.postToy(badToy); // Post the bad toy
         }
-    
+
         index();  // After adding, go back to the menu
     }
 
@@ -95,7 +95,7 @@ public class ElfView extends ShortMessageView {
 
         // Call the ToyController to delete the toy
         controller.deleteToyById(toyId);
-        
+
         index();  // After deleting, go back to the menu
     }
 }

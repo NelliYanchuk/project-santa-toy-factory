@@ -1,13 +1,14 @@
 package dev.nyanchuk.toy_factory.view;
 
+import dev.nyanchuk.toy_factory.controller.ToyController;
 
-public class SantaView extends ShortMessageView {
-    
-    //private static final ToyController controller = new ToyController();
+public class SantaView extends ToyView {
+
+    private static final ToyController controller = new ToyController(); // Ensure ToyController is instantiated
 
     public static void index() {
 
-        managerSanta();
+        managerSanta(); // You can customize this method to display the Santa menu
         System.out.println("1. View list of toys for GOOD children");
         System.out.println("2. View list of toys for BAD children");
         System.out.println("3. Save list of all toys (.csv)");
@@ -20,10 +21,12 @@ public class SantaView extends ShortMessageView {
 
         switch (option) {
             case 1:
-                // add showGoodToy method
+                controller.showGoodToys();
+                index();
                 break;
             case 2:
-                // add showBadToy method
+                controller.showBadToys();
+                index();
                 break;
             case 3:
                 System.out.println("This option is in progress now");
@@ -35,7 +38,7 @@ public class SantaView extends ShortMessageView {
             case 5:
                 closeScanner();
                 quitMessage();
-                return; // Add this return to exit the method after printing the quit message
+                return;
             default:
                 System.out.println("Invalid option.");
         }
