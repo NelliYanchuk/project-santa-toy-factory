@@ -3,13 +3,11 @@ package dev.nyanchuk.toy_factory.view;
 import dev.nyanchuk.toy_factory.model.GoodToy;
 import dev.nyanchuk.toy_factory.model.Toy;
 import dev.nyanchuk.toy_factory.model.BadToy;
-import dev.nyanchuk.toy_factory.view.ToyView;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
