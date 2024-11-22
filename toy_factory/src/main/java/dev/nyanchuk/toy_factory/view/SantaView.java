@@ -34,7 +34,7 @@ public class SantaView extends ToyView {
                 break;
             case 4:
                 System.out.println("Logging out...");
-                closeSession();
+                HomeView.index();
                 break;
             case 5:
                 closeScanner();

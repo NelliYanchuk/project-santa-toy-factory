@@ -12,11 +12,6 @@ public class ShortMessageView extends ScannerView {
         System.out.println("\n----- Incorrect input -----\nPlease choose the option from the list below:");
     }
 
-    // Method to return to home menu
-    public static void closeSession() {
-        HomeView.index();
-    }
-
     // Method to print quit message
     public static void quitMessage() {
         System.out.println("\n----- Good bye! Have a nice day! -----");

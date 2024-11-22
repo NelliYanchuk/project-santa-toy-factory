@@ -39,10 +39,33 @@ public class ShortMessageViewTest {
 
         assertTrue(outContent.toString().contains(expectedQuitMessage));
 
-        // ----- closeSession -----
-        // String expectedHomeMenu = "Log in as:";
-        // ShortMessageView.closeSession();
-        // assertTrue(outContent.toString().contains(expectedHomeMenu));
+        // ----- managerElf -----
+        String expectedElfMessage = "Toy Manager (Session Type: Elf)";
+
+        ShortMessageView.managerElf();
+
+        assertTrue(outContent.toString().contains(expectedElfMessage));
+
+        // ----- managerSanta -----
+        String expectedSantaMessage = "Toy Manager (Session Type: Santa)";
+
+        ShortMessageView.managerSanta();
+
+        assertTrue(outContent.toString().contains(expectedSantaMessage));
+
+        // ----- toyMessage -----
+        String expectedToyMessage = "toys in stock:";
+
+        ShortMessageView.toyMessage(expectedToyMessage);
+
+        assertTrue(outContent.toString().contains(expectedToyMessage));
+
+        // ----- noToyMessage -----
+        String expectedNoToyMessage = "There is no";
+
+        ShortMessageView.noToyMessage(expectedNoToyMessage);
+
+        assertTrue(outContent.toString().contains(expectedNoToyMessage));
 
         // Restore original System.out
         System.setOut(originalOut);
