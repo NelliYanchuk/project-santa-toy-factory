@@ -2,7 +2,8 @@ package dev.nyanchuk.toy_factory.repository;
 
 public class ToyRepositorySingleton {
 
-    private static final ToyRepository INSTANCE = new ToyRepository();  // Singleton instance of ToyRepository
+    // Singleton instance of ToyRepository
+    private static final ToyRepository INSTANCE = new ToyRepository();  
 
     // Private constructor to prevent instantiation
     private ToyRepositorySingleton() {

@@ -7,7 +7,7 @@ public class GoodToy extends Toy {
     private String category;
 
     public GoodToy(String title, String brand, int targetAge, String category) {
-        super(title, true);  // Pass the generated ID
+        super(title, true);  // ID will be set by ToyController in ElfView
         this.brand = brand;
         this.targetAge = targetAge;
         this.category = category;

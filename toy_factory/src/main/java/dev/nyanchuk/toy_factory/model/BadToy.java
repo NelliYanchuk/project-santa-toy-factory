@@ -6,7 +6,7 @@ public class BadToy extends Toy {
 
     // Constructor without ID
     public BadToy(String title, String content) {
-        super(title, false);  // ID will be set by ToyController
+        super(title, false);  // ID will be set by ToyController in ElfView
         this.content = content;
     }
 

@@ -21,11 +21,11 @@ public class ToyView extends ShortMessageView {
 
         toyMessage(goodType);
         for (GoodToy toy : goodToys) {
-            System.out.println("Toy ID: " + toy.getId());
-            System.out.println("Title: " + toy.getTitle());
-            System.out.println("Brand: " + toy.getBrand());
-            System.out.println("Age: " + toy.getTargetAge());
-            System.out.println("Category: " + toy.getCategory());
+            System.out.println(" * " + toy.getId()
+                    + ". Title: " + toy.getTitle()
+                    + ", Brand: " + toy.getBrand()
+                    + ", Recommended Age: " + toy.getTargetAge()
+                    + ", Category: " + toy.getCategory());
         }
     }
 
@@ -38,9 +38,9 @@ public class ToyView extends ShortMessageView {
 
         toyMessage(badType);
         for (BadToy toy : badToys) {
-            System.out.println("Toy ID: " + toy.getId());
-            System.out.println("Title: " + toy.getTitle());
-            System.out.println("Content: " + toy.getContent());
+            System.out.println(" * " + toy.getId()
+                    + ". Title: " + toy.getTitle()
+                    + ", Content: " + toy.getContent());
         }
     }
 
@@ -58,8 +58,9 @@ public class ToyView extends ShortMessageView {
             }
         }
 
-        if ((badToys == null || badToys.isEmpty())&& (goodToys == null || goodToys.isEmpty()) ) {
-            System.out.println("Stock does not have any toy left.");;
+        if ((badToys == null || badToys.isEmpty()) && (goodToys == null || goodToys.isEmpty())) {
+            System.out.println("Stock does not have any toy left.");
+            ;
             return; // Exit the method if no toys are found
         }
 
