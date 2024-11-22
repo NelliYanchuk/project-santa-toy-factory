@@ -41,7 +41,7 @@ public class SantaView extends ToyView {
                 quitMessage();
                 return;
             default:
-                System.out.println("Invalid option.");
+                printErrorMessage();
         }
     }
 }

@@ -43,7 +43,7 @@ public class ElfView extends ToyView {
                 quitMessage();
                 return;
             default:
-                System.out.println("Invalid option.");
+                printErrorMessage();
         }
     }
 
@@ -84,7 +84,7 @@ public class ElfView extends ToyView {
             controller.postBadToy(badToy); // Post the bad toy
         }
 
-        index(); // After adding, go back to the menu
+        index(); // After adding go back to the menu
     }
 
     // Method of toy deletion
