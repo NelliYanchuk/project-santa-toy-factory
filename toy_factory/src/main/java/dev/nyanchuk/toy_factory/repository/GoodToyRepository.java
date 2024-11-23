@@ -2,7 +2,7 @@ package dev.nyanchuk.toy_factory.repository;
 
 import dev.nyanchuk.toy_factory.db.IDatabase;
 import dev.nyanchuk.toy_factory.model.GoodToy;
-import dev.nyanchuk.toy_factory.singleton.*;
+import dev.nyanchuk.toy_factory.singleton.GoodToyDatabaseSingleton;
 
 import java.util.List;
 

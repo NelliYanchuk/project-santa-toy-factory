@@ -1,0 +1,11 @@
+ID,Title,Type,Brand,Age,Category,Content
+G1,Toy 1,Good,Brand A,5,Category A,
+G2,Toy 1,Good,Brand A,5,Category A,
+G3,Toy 2,Good,Brand B,8,Category B,
+G4,Toy 3,Good,Brand B,10,Category B,
+B1,Toy 4,Bad,,,,Damaged
+B2,Toy 2,Bad,,,,Missing part
+B3,Bad Toy 1,Bad,,,,Content A
+B4,Bad Toy 2,Bad,,,,Content B
+G5,Toy 9,Good,Brand E,3,Category E,
+B5,Toy 10,Bad,,,,Cracked

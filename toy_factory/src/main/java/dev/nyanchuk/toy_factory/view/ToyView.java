@@ -1,8 +1,6 @@
 package dev.nyanchuk.toy_factory.view;
 
-import dev.nyanchuk.toy_factory.model.GoodToy;
-import dev.nyanchuk.toy_factory.model.BadToy;
-import dev.nyanchuk.toy_factory.model.Toy;
+import dev.nyanchuk.toy_factory.model.*;
 
 import java.util.ArrayList;
 import java.util.List;
